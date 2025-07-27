@@ -6,6 +6,7 @@ pool:
 
 variables:
   terraformVersion: 'latest'
+  tf_dir: 'Resource group'
   bkstrgrg: 'rgdevops'
   bkstrg: 'rgdevops'
   bkcontainer: 'tfstate'
@@ -61,6 +62,7 @@ stages:
            inputs:
              provider: 'azurerm'
              command: 'plan'
+             workingDirectory: '$(System.DefaultWorkingDirectory)/$(tf_dir)'
              environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
          - task: TerraformTask@5
            displayName: apply
