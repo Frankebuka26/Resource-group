@@ -2,7 +2,14 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default
 
-steps:
+variables:
 
+stages:
+
+  - stage 1:Initialization (Init, validate)
+     stage:Initialization
+     jobs:
+        -job: TerraformInit
+         steps:
