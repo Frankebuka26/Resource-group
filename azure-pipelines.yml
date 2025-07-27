@@ -5,11 +5,66 @@ pool:
   name: Default
 
 variables:
+  terraformVersion: '3.0.0'
+  bkstrgrg: 'rgdevops'
+  bkstrg: 'rgdevops'
+  bkcontainer: 'tfstate'
+  bkstrgkey: 'devpipeline.terraform.tfstate'
 
 stages:
-
-  - stage 1:Initialization (Init, validate)
-     stage:Initialization
-     jobs:
-        -job: TerraformInit
-         steps:
+  - stage: tfvalidate
+    jobs:
+      - job: validate
+        continueOnError: false
+        steps:
+          - task: TerraformInstaller@1
+            displayName: tfinstall
+            inputs:
+             terraformVersion: $(terraformVersion)
+          - task: TerraformTask@5
+            displayName: 'init'
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+              backendAzureRmResourceGroupName: '$(bkstrgrg)'
+              backendAzureRmStorageAccountName: '$(bkstrg)'
+              backendAzureRmContainerName: '$(bkcontainer)'
+              backendAzureRmKey: '$(bkstrgkey)'
+          - task: TerraformTask@5
+            displayName: validate
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+  - stage: tfdeploy
+    condition: succeeded('tfvalidate')
+    dependsOn: tfvalidate
+    jobs:
+      - job: apply
+        steps:
+         - task: TerraformInstaller@1
+           displayName: tfinstall
+           inputs:
+            terraformVersion: $(terraformVersion)
+         - task: TerraformTask@5
+           displayName: init
+           inputs:
+             provider: 'azurerm'
+             command: 'init'
+             backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+             backendAzureRmResourceGroupName: '$(bkstrgrg)'
+             backendAzureRmStorageAccountName: '$(bkstrg)'
+             backendAzureRmContainerName: '$(bkcontainer)'
+             backendAzureRmKey: '$(bkstrgkey)'
+         - task: TerraformTask@5
+           displayName: plan
+           inputs:
+             provider: 'azurerm'
+             command: 'plan'
+             environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+         - task: TerraformTask@5
+           displayName: apply
+           inputs:
+             provider: 'azurerm'
+             command: 'apply'
+             environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
