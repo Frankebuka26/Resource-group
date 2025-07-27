@@ -27,7 +27,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
-              backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+              backendServiceArm: 'My service connection'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
@@ -52,7 +52,7 @@ stages:
            inputs:
              provider: 'azurerm'
              command: 'init'
-             backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+             backendServiceArm: 'My service connection'
              backendAzureRmResourceGroupName: '$(bkstrgrg)'
              backendAzureRmStorageAccountName: '$(bkstrg)'
              backendAzureRmContainerName: '$(bkcontainer)'
@@ -63,10 +63,10 @@ stages:
              provider: 'azurerm'
              command: 'plan'
              workingDirectory: '$(System.DefaultWorkingDirectory)/$(tf_dir)'
-             environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+             environmentServiceNameAzureRM: 'My service connection'
          - task: TerraformTask@5
            displayName: apply
            inputs:
              provider: 'azurerm'
              command: 'apply'
-             environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
+             environmentServiceNameAzureRM: 'My service connection'
