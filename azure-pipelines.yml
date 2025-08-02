@@ -1,0 +1,13 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+variables:
+  terraformVersion: 'latest'
+  tf_dir: 'Resource group'
+  bkstrgrg: 'rgdevops'
+  bkstrg: 'rgdevops'
+  bkcontainer: 'tfstate'
+  bkstrgkey: 'devpipeline.terraform.tfstate'
