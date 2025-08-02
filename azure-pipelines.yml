@@ -26,6 +26,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
+              backendServiceArm: 'Devservices'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
@@ -50,6 +51,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
+              backendServiceArm: 'Devservices'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
