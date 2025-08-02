@@ -1,13 +1,24 @@
-trigger:
-- main
+trigger: none
 
 pool:
   name: Default
 
 variables:
-  terraformVersion: 'latest'
+  terraformVersion: '4.37.0'
   tf_dir: 'Resource group'
   bkstrgrg: 'rgdevops'
   bkstrg: 'rgdevops'
   bkcontainer: 'tfstate'
   bkstrgkey: 'devpipeline.terraform.tfstate'
+
+stages:
+  - stage: tfvalidate
+    jobs:
+      - job: validate
+        continueOnError: false
+        steps:
+          - task: TerraformInstaller@1
+            displayName: tfinstall
+            inputs:
+              terraformVersion: $(terraformVersion)
+          
