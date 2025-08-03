@@ -7,9 +7,9 @@ variables:
   terraformVersion: 'latest'
   tf_dir: 'Resource group'
   bkstrgrg: 'rgdevops'
-  bkstrg: 'storagedevops'
+  bkstrg: 'rgdevops'
   bkcontainer: 'tfstate'
-  bkstrgkey: 'rgdevops.terraform.tfstate'
+  bkstrgkey: 'devpipeline.terraform.tfstate'
   -group: mysecrets
 
 stages:
