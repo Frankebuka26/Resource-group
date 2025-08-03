@@ -9,7 +9,7 @@ variables:
   bkstrgrg: 'rgdevops'
   bkstrg: 'storagedevops'
   bkcontainer: 'tfstate'
-  bkstrgkey: 'devpipeline.terraform.tfstate'
+  bkstrgkey: 'rgdevops.terraform.tfstate'
   -group: mysecrets
 
 stages:
