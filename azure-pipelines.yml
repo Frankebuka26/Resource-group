@@ -7,7 +7,7 @@ variables:
   terraformVersion: 'latest'
   tf_dir: 'Resource group'
   bkstrgrg: 'rgdevops'
-  bkstrg: 'rgdevops'
+  bkstrg: 'storagedevops'
   bkcontainer: 'tfstate'
   bkstrgkey: 'devpipeline.terraform.tfstate'
 
