@@ -10,6 +10,7 @@ variables:
   bkstrg: 'rgdevops'
   bkcontainer: 'tfstate'
   bkstrgkey: 'devpipeline.terraform.tfstate'
+ - group: Mytfsecrets2
 
 stages:
   - stage: tfvalidate
