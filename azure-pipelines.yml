@@ -4,7 +4,6 @@ pool:
   name: Default
 
 variables:
-- group: mysecrets
 - name: terraformVersion
   value: latest
 - name: tf_dir
