@@ -4,13 +4,15 @@ pool:
   name: Default
 
 variables:
-  terraformVersion: 'latest'
-  tf_dir: 'Resource group'
-  bkstrgrg: 'rgdevops'
-  bkstrg: 'rgdevops'
-  bkcontainer: 'tfstate'
-  bkstrgkey: 'devpipeline.terraform.tfstate'
- - group: Mytfsecrets2
+- group: mysecrets
+- name: bkstrgrg
+  value: rgdevops
+- name: bkstrg
+  value: rgdevops
+- name: bkcontainer
+  value: tfstate
+- name: bkstrgkey
+  value: devpipeline.terraform.tfstate
 
 stages:
   - stage: tfvalidate
