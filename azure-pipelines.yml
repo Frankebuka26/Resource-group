@@ -26,7 +26,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
-              backendServiceArm: 'Devservices'
+              backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
@@ -56,7 +56,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
-              backendServiceArm: 'Devservices'
+              backendServiceArm: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
               backendAzureRmResourceGroupName: '$(bkstrgrg)'
               backendAzureRmStorageAccountName: '$(bkstrg)'
               backendAzureRmContainerName: '$(bkcontainer)'
@@ -71,10 +71,10 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'plan'
-              environmentServiceNameAzureRM: 'Devservices'
+              environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
           - task: TerraformTask@5
             displayName: apply
             inputs:
               provider: 'azurerm'
               command: 'apply'
-              environmentServiceNameAzureRM: 'Devservices'
+              environmentServiceNameAzureRM: 'Subscription 1(2ccbb89e-86b6-41f1-819f-b04014248457)'
