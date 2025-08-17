@@ -5,6 +5,10 @@ pool:
 
 variables:
 - group: mysecrets
+- name: terraformVersion
+  value: latest
+- name: tf_dir
+  value: Resource group
 - name: bkstrgrg
   value: rgdevops
 - name: bkstrg
